@@ -1,66 +1,156 @@
-# 💊 MedTrack — Smart Medication Reminder
+<p align="center">
+  <img src="docs/icon.png" width="112" alt="MedTrack icon" />
+</p>
 
-> A privacy-first, offline-only medication tracker built around a proper medical
-> data model.
+<h1 align="center">💊 MedTrack — Smart Medication Reminder</h1>
 
-![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter)
-![Dart](https://img.shields.io/badge/Dart-3.x-0175C2?logo=dart)
-![License](https://img.shields.io/badge/License-MIT-green)
+<p align="center">
+  A privacy-first, offline-only medication tracker built around a proper medical
+  data model.
+</p>
 
-> ⚠️ **Work in progress.** Foundation (Day 1) is in place: architecture,
-> theming, routing, localization and the codegen pipeline. Features land over
-> the following days. The full README (screenshots, feature tour) arrives once
-> the MVP is complete.
+<p align="center">
+  <img src="https://img.shields.io/badge/Flutter-3.41-02569B?logo=flutter" alt="Flutter" />
+  <img src="https://img.shields.io/badge/Dart-3-0175C2?logo=dart" alt="Dart" />
+  <img src="https://img.shields.io/badge/License-MIT-green" alt="License: MIT" />
+  <img src="https://github.com/M1IkyWay/medtrack/actions/workflows/ci.yml/badge.svg" alt="CI" />
+</p>
 
-## Why this exists
+---
 
-Most medication reminder apps model a name and a time. Real tracking is richer —
-dose forms, units, meal relations, finite courses and as-needed (PRN) meds.
+## 🎯 Why this exists
+
+Most medication reminder apps model a **name** and a **time**. Real medication
+tracking is richer:
+
+- Different **forms** (tablets, drops, inhalers, injections, patches) dose
+  differently
+- Some meds are taken **with food**, others on an **empty stomach**
+- **Courses** have a fixed duration and total dose count
+- **As-needed (PRN)** medications have no schedule at all
+- A dose can be **taken, skipped, missed, or postponed** — not just a checkbox
+
 MedTrack pairs Flutter engineering with a medical domain model to treat
-medication tracking with the complexity it deserves.
+medication tracking with the complexity it deserves. Read the full design in
+[docs/DATA_MODEL.md](docs/DATA_MODEL.md).
 
-## Tech stack
+---
 
-| Category | Choice |
-|---|---|
-| Framework | Flutter 3.x |
-| State | Riverpod 3.x (manual providers) |
-| Storage | Drift (SQLite) |
-| Routing | go_router |
-| Notifications | flutter_local_notifications + timezone |
-| i18n | flutter_localizations + ARB (EN · UK · ES · DE) |
+## ✨ Features
 
-## Architecture
+- **Rich medication model** — forms, units (mg/ml/IU/drops/puffs…), meal relations
+- **Flexible scheduling** — daily, weekly, every N days, timed courses, as-needed
+- **Local reminders** — timezone-aware notifications, one per upcoming dose
+- **Dose logging** — take / skip / postpone, straight from the notification
+- **Adherence history** — compliance rate, month calendar, per-dose log
+- **100% offline** — your data never leaves the device; no accounts, no tracking
+- **Theming** — Material 3, light / dark / system
+- **Multilingual** — English · Українська · Español · Deutsch
 
-Feature-first with clean separation:
+---
+
+## 📸 Screenshots
+
+> _Screenshots and a short demo GIF go in [`docs/screenshots/`](docs/screenshots)
+> — captured from a simulator run._
+
+---
+
+## 🏗 Architecture
+
+Feature-first with clean separation of concerns:
 
 ```
 lib/
-├── app/        # MaterialApp, router, theme
-├── core/       # Shared utils, extensions, failures
-├── data/       # Drift database + services
-├── features/   # medications / history / settings
-└── l10n/       # ARB translations
+├── app/          # MaterialApp, router (go_router), theme
+├── core/         # Shared utils, extensions, failures, constants
+├── data/         # Drift database + services (notifications)
+├── features/
+│   ├── medications/   # domain · data · application · presentation
+│   └── settings/      # theme + language + about
+└── l10n/         # ARB translations (en · uk · es · de)
 ```
 
-Each feature is split into `domain/` · `data/` · `application/` ·
-`presentation/`.
+Each feature is split into:
 
-## Getting started
+- **domain/** — framework-free models, enums, repository interfaces
+- **data/** — Drift-backed repository implementations
+- **application/** — Riverpod providers and pure logic (e.g. the dose scheduler)
+- **presentation/** — screens and widgets
+
+---
+
+## 🛠 Tech stack
+
+| Category | Choice | Why |
+|---|---|---|
+| Framework | Flutter 3.x | Cross-platform, modern |
+| State | Riverpod 3.x (manual providers) | Type-safe, testable, no `BuildContext` coupling |
+| Storage | Drift (SQLite) | Fast, typed, real query API |
+| Routing | go_router | Official, declarative routing |
+| Notifications | flutter_local_notifications + timezone | Battle-tested, timezone-aware |
+| Prefs | shared_preferences | Simple local settings |
+| Testing | flutter_test | Unit + widget tests |
+| CI | GitHub Actions | Analyze + test on every push |
+
+> **Note on Riverpod codegen:** the project uses hand-written providers rather
+> than `riverpod_generator`. On the pinned Flutter version, the Riverpod and
+> Drift code generators require mutually incompatible `analyzer` versions;
+> Drift's is mandatory, so Riverpod uses manual (and equally idiomatic)
+> providers.
+
+---
+
+## 🚀 Getting started
+
+### Prerequisites
+- Flutter 3.41.x
+- Xcode (iOS) or Android Studio (Android)
+
+### Setup
 
 ```bash
+git clone https://github.com/M1IkyWay/medtrack.git
+cd medtrack
 flutter pub get
 dart run build_runner build      # generates Drift code
 flutter gen-l10n                 # generates localizations
 flutter run
 ```
 
-## Testing
+Generated files (`*.g.dart`, localization delegates) are intentionally kept out
+of version control and regenerated by the two commands above.
+
+---
+
+## 🧪 Testing
 
 ```bash
 flutter test
 ```
 
-## License
+Coverage includes the medication repository (CRUD + dose logging round-trips),
+the pure `DoseScheduler`, the settings controller, and a widget test that adds a
+medication end to end.
 
-MIT — see [LICENSE](LICENSE).
+---
+
+## 🗺 Roadmap
+
+- [ ] Refill reminders
+- [ ] Export dose history as PDF/CSV
+- [ ] Home-screen widget with the next dose
+- [ ] Optional, opt-in device sync
+- [ ] Apple Health / Google Fit integration
+
+---
+
+## 👋 About
+
+A Flutter developer with a medical background — this project is where those two
+worlds meet.
+
+## 📄 License
+
+MIT — see [LICENSE](LICENSE). Feel free to use this codebase as a reference for
+your own Flutter projects.

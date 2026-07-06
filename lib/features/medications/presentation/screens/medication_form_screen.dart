@@ -179,6 +179,7 @@ class _MedicationFormScreenState extends ConsumerState<MedicationFormScreen> {
                 children: [
                   _SectionTitle(l10n.sectionBasicInfo),
                   TextFormField(
+                    key: const Key('medicationName'),
                     controller: _nameController,
                     textInputAction: TextInputAction.next,
                     decoration: InputDecoration(
@@ -219,6 +220,7 @@ class _MedicationFormScreenState extends ConsumerState<MedicationFormScreen> {
                       Expanded(
                         flex: 2,
                         child: TextFormField(
+                          key: const Key('doseAmount'),
                           controller: _doseAmountController,
                           keyboardType: const TextInputType.numberWithOptions(
                             decimal: true,
