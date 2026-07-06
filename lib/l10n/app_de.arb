@@ -1,0 +1,17 @@
+{
+  "@@locale": "de",
+  "appTitle": "MedTrack",
+  "medicationsListTitle": "Medikamente",
+  "medicationsTabActive": "Aktiv",
+  "medicationsTabInactive": "Inaktiv",
+  "medicationsEmptyTitle": "Noch keine Medikamente",
+  "medicationsEmptyMessage": "Tippe auf +, um dein erstes Medikament hinzuzufügen.",
+  "addMedication": "Medikament hinzufügen",
+  "medicationFormAddTitle": "Medikament hinzufügen",
+  "medicationFormEditTitle": "Medikament bearbeiten",
+  "settingsTitle": "Einstellungen",
+  "commonSave": "Speichern",
+  "commonCancel": "Abbrechen",
+  "commonDelete": "Löschen",
+  "commonEdit": "Bearbeiten"
+}

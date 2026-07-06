@@ -1,0 +1,47 @@
+{
+  "@@locale": "en",
+  "appTitle": "MedTrack",
+  "@appTitle": {
+    "description": "Application name shown on the launcher and app bars."
+  },
+  "medicationsListTitle": "Medications",
+  "@medicationsListTitle": {
+    "description": "Title of the medications list screen."
+  },
+  "medicationsTabActive": "Active",
+  "@medicationsTabActive": {
+    "description": "Label for the tab showing active medication courses."
+  },
+  "medicationsTabInactive": "Inactive",
+  "@medicationsTabInactive": {
+    "description": "Label for the tab showing inactive/finished medications."
+  },
+  "medicationsEmptyTitle": "No medications yet",
+  "@medicationsEmptyTitle": {
+    "description": "Heading of the empty state on the medications list."
+  },
+  "medicationsEmptyMessage": "Tap + to add your first medication.",
+  "@medicationsEmptyMessage": {
+    "description": "Body text of the empty state on the medications list."
+  },
+  "addMedication": "Add medication",
+  "@addMedication": {
+    "description": "Tooltip/label for the button that opens the add-medication form."
+  },
+  "medicationFormAddTitle": "Add medication",
+  "@medicationFormAddTitle": {
+    "description": "Title of the medication form when creating a new entry."
+  },
+  "medicationFormEditTitle": "Edit medication",
+  "@medicationFormEditTitle": {
+    "description": "Title of the medication form when editing an existing entry."
+  },
+  "settingsTitle": "Settings",
+  "@settingsTitle": {
+    "description": "Title of the settings screen."
+  },
+  "commonSave": "Save",
+  "commonCancel": "Cancel",
+  "commonDelete": "Delete",
+  "commonEdit": "Edit"
+}

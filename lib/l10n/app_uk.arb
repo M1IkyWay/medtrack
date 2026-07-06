@@ -1,0 +1,17 @@
+{
+  "@@locale": "uk",
+  "appTitle": "MedTrack",
+  "medicationsListTitle": "Ліки",
+  "medicationsTabActive": "Активні",
+  "medicationsTabInactive": "Неактивні",
+  "medicationsEmptyTitle": "Ще немає ліків",
+  "medicationsEmptyMessage": "Натисніть +, щоб додати перші ліки.",
+  "addMedication": "Додати ліки",
+  "medicationFormAddTitle": "Додати ліки",
+  "medicationFormEditTitle": "Редагувати ліки",
+  "settingsTitle": "Налаштування",
+  "commonSave": "Зберегти",
+  "commonCancel": "Скасувати",
+  "commonDelete": "Видалити",
+  "commonEdit": "Редагувати"
+}
