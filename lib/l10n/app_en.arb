@@ -5,43 +5,104 @@
     "description": "Application name shown on the launcher and app bars."
   },
   "medicationsListTitle": "Medications",
-  "@medicationsListTitle": {
-    "description": "Title of the medications list screen."
-  },
   "medicationsTabActive": "Active",
-  "@medicationsTabActive": {
-    "description": "Label for the tab showing active medication courses."
-  },
   "medicationsTabInactive": "Inactive",
-  "@medicationsTabInactive": {
-    "description": "Label for the tab showing inactive/finished medications."
-  },
   "medicationsEmptyTitle": "No medications yet",
-  "@medicationsEmptyTitle": {
-    "description": "Heading of the empty state on the medications list."
-  },
   "medicationsEmptyMessage": "Tap + to add your first medication.",
-  "@medicationsEmptyMessage": {
-    "description": "Body text of the empty state on the medications list."
-  },
+  "medicationsInactiveEmptyTitle": "Nothing here",
+  "medicationsInactiveEmptyMessage": "Medications you finish or archive show up here.",
   "addMedication": "Add medication",
-  "@addMedication": {
-    "description": "Tooltip/label for the button that opens the add-medication form."
-  },
   "medicationFormAddTitle": "Add medication",
-  "@medicationFormAddTitle": {
-    "description": "Title of the medication form when creating a new entry."
-  },
   "medicationFormEditTitle": "Edit medication",
-  "@medicationFormEditTitle": {
-    "description": "Title of the medication form when editing an existing entry."
-  },
   "settingsTitle": "Settings",
-  "@settingsTitle": {
-    "description": "Title of the settings screen."
-  },
+
   "commonSave": "Save",
   "commonCancel": "Cancel",
   "commonDelete": "Delete",
-  "commonEdit": "Edit"
+  "commonEdit": "Edit",
+  "commonAdd": "Add",
+
+  "sectionBasicInfo": "Basic info",
+  "sectionDosage": "Dosage",
+  "sectionSchedule": "Schedule",
+  "sectionMealRelation": "Meal relation",
+  "sectionNotes": "Notes",
+
+  "fieldName": "Name",
+  "fieldNameHint": "e.g. Ibuprofen",
+  "fieldGenericName": "Generic name",
+  "fieldGenericNameHint": "Active ingredient (optional)",
+  "fieldPrescribedFor": "Prescribed for",
+  "fieldPrescribedForHint": "e.g. Headache (optional)",
+  "fieldForm": "Form",
+  "fieldDoseAmount": "Amount",
+  "fieldDoseUnit": "Unit",
+  "fieldScheduleType": "Repeats",
+  "fieldTimes": "Times",
+  "addTime": "Add time",
+  "fieldDaysOfWeek": "Days of week",
+  "fieldIntervalDays": "Every N days",
+  "fieldStartDate": "Start date",
+  "fieldEndDate": "End date",
+  "fieldTotalDoses": "Total doses",
+  "fieldNotesHint": "e.g. take with plenty of water",
+  "notSet": "Not set",
+
+  "validationRequired": "Required",
+  "validationInvalidNumber": "Enter a valid number",
+  "validationPositive": "Must be greater than zero",
+  "validationAtLeastOneTime": "Add at least one time",
+  "validationSelectDays": "Select at least one day",
+
+  "deleteConfirmTitle": "Delete medication?",
+  "deleteConfirmMessage": "This removes {name} and its dose history. This can''t be undone.",
+  "@deleteConfirmMessage": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+
+  "detailsScheduleTitle": "Schedule",
+  "detailsHistoryTitle": "Recent doses",
+  "detailsNoDoses": "No doses logged yet.",
+  "detailsCourseProgress": "Course: {taken} of {total} doses",
+  "@detailsCourseProgress": {
+    "placeholders": {
+      "taken": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "doseSummary": "{amount} {unit}",
+  "@doseSummary": {
+    "placeholders": {
+      "amount": { "type": "String" },
+      "unit": { "type": "String" }
+    }
+  },
+
+  "formTablet": "Tablet",
+  "formCapsule": "Capsule",
+  "formLiquid": "Liquid",
+  "formDrops": "Drops",
+  "formInjection": "Injection",
+  "formInhaler": "Inhaler",
+  "formPatch": "Patch",
+  "formCream": "Cream",
+  "formOintment": "Ointment",
+  "formSuppository": "Suppository",
+  "formSpray": "Spray",
+  "formOther": "Other",
+
+  "scheduleOnce": "Once",
+  "scheduleDaily": "Daily",
+  "scheduleWeekly": "Weekly",
+  "scheduleEveryNDays": "Every N days",
+  "scheduleCourse": "Course",
+  "scheduleAsNeeded": "As needed",
+
+  "mealIndependent": "Independent of meals",
+  "mealBeforeMeal": "Before meal",
+  "mealWithMeal": "With meal",
+  "mealAfterMeal": "After meal",
+  "mealEmptyStomach": "On an empty stomach"
 }
