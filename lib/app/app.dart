@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../data/services/notification_service.dart';
 import '../data/services/notification_service_provider.dart';
+import '../features/settings/application/settings_providers.dart';
 import '../l10n/app_localizations.dart';
 import 'router.dart';
 import 'theme/app_theme.dart';
@@ -58,13 +59,15 @@ class _MedTrackAppState extends ConsumerState<MedTrackApp> {
   @override
   Widget build(BuildContext context) {
     final router = ref.watch(routerProvider);
+    final settings = ref.watch(settingsControllerProvider);
 
     return MaterialApp.router(
       onGenerateTitle: (context) => AppLocalizations.of(context).appTitle,
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light(),
       darkTheme: AppTheme.dark(),
-      themeMode: ThemeMode.system,
+      themeMode: settings.themeMode,
+      locale: settings.locale,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       routerConfig: router,

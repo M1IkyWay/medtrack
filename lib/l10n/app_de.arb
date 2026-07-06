@@ -97,5 +97,16 @@
   "statusMissed": "Verpasst",
   "statusPostponed": "Verschoben",
 
-  "complianceLabel": "{percent}% eingenommen"
+  "complianceLabel": "{percent}% eingenommen",
+
+  "settingsAppearance": "Darstellung",
+  "themeSystem": "System",
+  "themeLight": "Hell",
+  "themeDark": "Dunkel",
+  "settingsLanguage": "Sprache",
+  "languageSystem": "Systemstandard",
+  "settingsAbout": "Über",
+  "aboutVersion": "Version {version}",
+  "aboutSource": "Quellcode",
+  "aboutPrivacy": "Deine Daten bleiben auf diesem Gerät. Keine Konten, kein Tracking."
 }

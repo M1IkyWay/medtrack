@@ -128,5 +128,21 @@
     "placeholders": {
       "percent": { "type": "int" }
     }
-  }
+  },
+
+  "settingsAppearance": "Appearance",
+  "themeSystem": "System",
+  "themeLight": "Light",
+  "themeDark": "Dark",
+  "settingsLanguage": "Language",
+  "languageSystem": "System default",
+  "settingsAbout": "About",
+  "aboutVersion": "Version {version}",
+  "@aboutVersion": {
+    "placeholders": {
+      "version": { "type": "String" }
+    }
+  },
+  "aboutSource": "Source code",
+  "aboutPrivacy": "Your data stays on this device. No accounts, no tracking."
 }

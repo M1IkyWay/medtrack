@@ -97,5 +97,16 @@
   "statusMissed": "Perdida",
   "statusPostponed": "Pospuesta",
 
-  "complianceLabel": "{percent}% tomadas"
+  "complianceLabel": "{percent}% tomadas",
+
+  "settingsAppearance": "Apariencia",
+  "themeSystem": "Sistema",
+  "themeLight": "Claro",
+  "themeDark": "Oscuro",
+  "settingsLanguage": "Idioma",
+  "languageSystem": "Predeterminado del sistema",
+  "settingsAbout": "Acerca de",
+  "aboutVersion": "Versión {version}",
+  "aboutSource": "Código fuente",
+  "aboutPrivacy": "Tus datos permanecen en este dispositivo. Sin cuentas ni rastreo."
 }

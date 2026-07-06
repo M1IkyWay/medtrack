@@ -97,5 +97,16 @@
   "statusMissed": "Втрачено",
   "statusPostponed": "Відкладено",
 
-  "complianceLabel": "Прийнято {percent}%"
+  "complianceLabel": "Прийнято {percent}%",
+
+  "settingsAppearance": "Вигляд",
+  "themeSystem": "Системна",
+  "themeLight": "Світла",
+  "themeDark": "Темна",
+  "settingsLanguage": "Мова",
+  "languageSystem": "Як у системі",
+  "settingsAbout": "Про застосунок",
+  "aboutVersion": "Версія {version}",
+  "aboutSource": "Вихідний код",
+  "aboutPrivacy": "Ваші дані лишаються на цьому пристрої. Без акаунтів і трекінгу."
 }

@@ -9,6 +9,8 @@ import 'package:medtrack/data/local/database.dart';
 import 'package:medtrack/data/local/database_provider.dart';
 import 'package:medtrack/data/services/notification_service.dart';
 import 'package:medtrack/data/services/notification_service_provider.dart';
+import 'package:medtrack/features/settings/application/settings_providers.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 /// No-op notification service so app startup doesn't touch the platform plugin.
 class _FakeNotificationService extends NotificationService {
@@ -32,6 +34,9 @@ void main() {
   testWidgets('App boots to the medications list with an empty state', (
     tester,
   ) async {
+    SharedPreferences.setMockInitialValues({});
+    final prefs = await SharedPreferences.getInstance();
+
     await tester.pumpWidget(
       ProviderScope(
         overrides: [
@@ -43,6 +48,7 @@ void main() {
           notificationServiceProvider.overrideWithValue(
             _FakeNotificationService(),
           ),
+          sharedPreferencesProvider.overrideWithValue(prefs),
         ],
         child: const MedTrackApp(),
       ),

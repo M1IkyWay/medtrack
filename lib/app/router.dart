@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -34,38 +35,75 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: 'medication/new',
             name: RouteName.medicationForm,
-            builder: (context, state) {
+            pageBuilder: (context, state) {
               final id = int.tryParse(state.uri.queryParameters['id'] ?? '');
-              return MedicationFormScreen(medicationId: id);
+              return _transitionPage(
+                state,
+                MedicationFormScreen(medicationId: id),
+              );
             },
           ),
           GoRoute(
             path: 'medication/:id',
             name: RouteName.medicationDetails,
-            builder: (context, state) {
+            pageBuilder: (context, state) {
               final id = int.parse(state.pathParameters['id']!);
-              return MedicationDetailsScreen(medicationId: id);
+              return _transitionPage(
+                state,
+                MedicationDetailsScreen(medicationId: id),
+              );
             },
           ),
           GoRoute(
             path: 'take',
             name: RouteName.takeDose,
-            builder: (context, state) {
+            pageBuilder: (context, state) {
               final id = int.parse(state.uri.queryParameters['medicationId']!);
               final millis = int.parse(state.uri.queryParameters['time']!);
-              return TakeDoseScreen(
-                medicationId: id,
-                scheduledTime: DateTime.fromMillisecondsSinceEpoch(millis),
+              return _transitionPage(
+                state,
+                TakeDoseScreen(
+                  medicationId: id,
+                  scheduledTime: DateTime.fromMillisecondsSinceEpoch(millis),
+                ),
               );
             },
           ),
           GoRoute(
             path: 'settings',
             name: RouteName.settings,
-            builder: (context, state) => const SettingsScreen(),
+            pageBuilder: (context, state) =>
+                _transitionPage(state, const SettingsScreen()),
           ),
         ],
       ),
     ],
   );
 });
+
+/// A subtle fade-and-rise transition shared by pushed routes, giving the app a
+/// consistent, non-default feel across platforms.
+CustomTransitionPage<void> _transitionPage(GoRouterState state, Widget child) {
+  return CustomTransitionPage<void>(
+    key: state.pageKey,
+    child: child,
+    transitionDuration: const Duration(milliseconds: 250),
+    reverseTransitionDuration: const Duration(milliseconds: 200),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      final curved = CurvedAnimation(
+        parent: animation,
+        curve: Curves.easeOutCubic,
+      );
+      return FadeTransition(
+        opacity: curved,
+        child: SlideTransition(
+          position: Tween<Offset>(
+            begin: const Offset(0, 0.03),
+            end: Offset.zero,
+          ).animate(curved),
+          child: child,
+        ),
+      );
+    },
+  );
+}
