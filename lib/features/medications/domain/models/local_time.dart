@@ -1,11 +1,8 @@
 import 'package:equatable/equatable.dart';
 
-/// A wall-clock time of day (hour + minute), independent of any date.
-///
-/// The domain deliberately avoids Flutter's `TimeOfDay` so models stay free of
-/// the `flutter/material` dependency and remain unit-testable. Presentation
-/// converts to/from `TimeOfDay` at the UI edge; persistence stores
-/// [minutesFromMidnight].
+/// A wall-clock time of day. Deliberately not Flutter's `TimeOfDay`, so the
+/// domain stays free of `flutter/material` and unit-testable; the UI converts
+/// at its edge and persistence stores [minutesFromMidnight].
 class LocalTime extends Equatable implements Comparable<LocalTime> {
   const LocalTime(this.hour, this.minute)
     : assert(hour >= 0 && hour < 24, 'hour must be 0..23'),

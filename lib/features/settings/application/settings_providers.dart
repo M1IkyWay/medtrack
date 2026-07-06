@@ -5,8 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../data/settings_repository.dart';
 import '../domain/app_settings.dart';
 
-/// Holds the `SharedPreferences` instance. Overridden in `main()` with the
-/// value loaded before `runApp`, so settings are available synchronously.
+/// Overridden in `main()` with the instance loaded before `runApp`.
 final sharedPreferencesProvider = Provider<SharedPreferences>((ref) {
   throw UnimplementedError(
     'sharedPreferencesProvider must be overridden in main()',
@@ -17,7 +16,6 @@ final settingsRepositoryProvider = Provider<SettingsRepository>((ref) {
   return SettingsRepository(ref.watch(sharedPreferencesProvider));
 });
 
-/// Exposes the current [AppSettings] and mutations that persist changes.
 final settingsControllerProvider =
     NotifierProvider<SettingsController, AppSettings>(SettingsController.new);
 
@@ -30,8 +28,7 @@ class SettingsController extends Notifier<AppSettings> {
     await ref.read(settingsRepositoryProvider).save(state);
   }
 
-  /// Sets the language override, or clears it (follow system) when [code] is
-  /// null.
+  /// Pass `null` to clear the override and follow the system locale.
   Future<void> setLanguage(String? code) async {
     state = code == null
         ? state.copyWith(clearLanguage: true)

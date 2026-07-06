@@ -6,10 +6,9 @@ import '../../domain/models/dose_log.dart';
 import '../../domain/models/medication_enums.dart';
 import '../medication_presentation.dart';
 
-/// A compact month grid marking each day by its dominant dose status.
-///
-/// For a day with several logs, the "best" outcome wins (taken > postponed >
-/// skipped > missed) so a day where a dose was taken reads as adherent.
+/// Month grid coloured by dose status. When a day has several logs the best
+/// outcome wins (taken > postponed > skipped > missed), so a day with any dose
+/// taken reads as adherent.
 class DoseCalendar extends StatelessWidget {
   const DoseCalendar({required this.logs, super.key});
 

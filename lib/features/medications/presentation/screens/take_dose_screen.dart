@@ -12,9 +12,8 @@ import '../../domain/models/medication_enums.dart';
 import '../format.dart';
 import '../medication_presentation.dart';
 
-/// Screen shown when the user taps a reminder: confirm, skip or postpone the
-/// dose. Records the outcome in the dose log and (for postpone) re-fires the
-/// reminder shortly after.
+/// Opened from a reminder tap: confirm, skip or postpone the dose. Postpone
+/// also re-fires the reminder a little later.
 class TakeDoseScreen extends ConsumerWidget {
   const TakeDoseScreen({
     required this.medicationId,

@@ -3,10 +3,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../domain/app_settings.dart';
 
-/// Persists [AppSettings] in `SharedPreferences`.
-///
-/// Reads are synchronous (the [SharedPreferences] instance is loaded once at
-/// startup), so settings can drive `MaterialApp` without an async gate.
+/// Persists [AppSettings] in `SharedPreferences`. Reads are synchronous (the
+/// instance is loaded at startup), so settings can drive `MaterialApp` without
+/// an async gate.
 class SettingsRepository {
   SettingsRepository(this._prefs);
 

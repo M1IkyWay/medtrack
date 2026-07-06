@@ -5,8 +5,8 @@ import '../../../app/theme/app_colors.dart';
 import '../../../l10n/app_localizations.dart';
 import '../domain/models/medication_enums.dart';
 
-/// Presentation-only mappings for the medical enums: icons and localized
-/// labels. Kept out of the domain so the models stay framework-free.
+/// Icons and localized labels for the medical enums — kept out of the domain so
+/// the models stay framework-free.
 
 extension MedicationFormPresentation on MedicationForm {
   IconData get icon => switch (this) {
@@ -41,8 +41,7 @@ extension MedicationFormPresentation on MedicationForm {
 }
 
 extension DoseUnitPresentation on DoseUnit {
-  /// Standard medical abbreviations — intentionally not localized (they are
-  /// used identically across the app's supported locales).
+  /// Standard abbreviations — intentionally not localized.
   String get label => switch (this) {
     DoseUnit.mg => 'mg',
     DoseUnit.g => 'g',

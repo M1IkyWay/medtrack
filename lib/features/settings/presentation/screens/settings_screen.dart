@@ -7,11 +7,10 @@ import '../../../../core/constants/app_info.dart';
 import '../../../../core/extensions/context_extensions.dart';
 import '../../application/settings_providers.dart';
 
-/// App settings: appearance (theme), language override and an about section.
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
 
-  /// Native language names (endonyms) — intentionally not localized.
+  /// Endonyms — intentionally not localized.
   static const _languageNames = {
     'en': 'English',
     'uk': 'Українська',

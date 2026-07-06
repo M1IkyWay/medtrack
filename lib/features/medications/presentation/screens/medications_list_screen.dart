@@ -9,7 +9,6 @@ import '../../application/medication_providers.dart';
 import '../widgets/medication_card.dart';
 import '../widgets/medications_empty_state.dart';
 
-/// Home screen: medications split into Active / Inactive tabs.
 class MedicationsListScreen extends StatelessWidget {
   const MedicationsListScreen({super.key});
 

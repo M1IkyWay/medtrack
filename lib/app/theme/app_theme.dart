@@ -3,12 +3,8 @@ import 'package:flutter/material.dart';
 import 'app_colors.dart';
 import 'app_typography.dart';
 
-/// Builds MedTrack's light and dark [ThemeData].
-///
-/// Both themes are generated from a single [AppColors.seed] so they stay
-/// tonally consistent, share the Inter type scale, and only differ in
-/// brightness. Component-level tweaks (rounded cards, filled inputs) live here
-/// so screens never hand-roll their own styling.
+/// Light and dark themes, both generated from [AppColors.seed]. Component tweaks
+/// (rounded cards, filled inputs) live here so screens don't restyle by hand.
 abstract final class AppTheme {
   static ThemeData light() => _build(Brightness.light);
 

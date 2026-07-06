@@ -10,11 +10,8 @@ import '../l10n/app_localizations.dart';
 import 'router.dart';
 import 'theme/app_theme.dart';
 
-/// Root widget: wires up routing, theming and localization, and bridges
-/// notification taps into navigation.
-///
-/// The app follows the system theme (light/dark) and system locale by default;
-/// explicit overrides for both arrive on Day 4 via settings.
+/// Root widget: routing, theming, localization, and routing notification taps
+/// into the take-dose flow.
 class MedTrackApp extends ConsumerStatefulWidget {
   const MedTrackApp({super.key});
 

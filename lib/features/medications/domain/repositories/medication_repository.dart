@@ -2,11 +2,8 @@ import '../models/dose_log.dart';
 import '../models/medication.dart';
 import '../models/medication_enums.dart';
 
-/// Contract for reading and writing medications and their dose history.
-///
-/// Lives in the domain layer so `application`/`presentation` depend on this
-/// abstraction, not on Drift. The Drift-backed implementation is in
-/// `data/repositories`.
+/// Read/write contract for medications and their dose history. Lives in the
+/// domain layer so the rest of the app depends on this, not on Drift.
 abstract interface class MedicationRepository {
   /// Streams medications, newest first. When [activeOnly] is true only active
   /// courses are emitted; when false, only inactive ones.

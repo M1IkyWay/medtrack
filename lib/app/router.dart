@@ -8,11 +8,8 @@ import '../features/medications/presentation/screens/medications_list_screen.dar
 import '../features/medications/presentation/screens/take_dose_screen.dart';
 import '../features/settings/presentation/screens/settings_screen.dart';
 
-/// Named routes for the app.
-///
-/// Hand-written (no `go_router_builder` codegen) to avoid a second
-/// source-generator competing with `drift_dev` over the analyzer version. The
-/// small helpers below keep call sites readable without that machinery.
+/// Route names. Kept hand-written (no `go_router_builder`) because a second
+/// source generator clashes with `drift_dev` over the analyzer version.
 abstract final class RouteName {
   static const medications = 'medications';
   static const medicationForm = 'medication-form';
@@ -21,8 +18,6 @@ abstract final class RouteName {
   static const settings = 'settings';
 }
 
-/// The app's [GoRouter], exposed via Riverpod so it can later react to
-/// providers (e.g. redirect on locale/theme or future auth needs).
 final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(
     initialLocation: '/',
@@ -81,8 +76,7 @@ final routerProvider = Provider<GoRouter>((ref) {
   );
 });
 
-/// A subtle fade-and-rise transition shared by pushed routes, giving the app a
-/// consistent, non-default feel across platforms.
+/// Shared fade-and-rise transition for pushed routes.
 CustomTransitionPage<void> _transitionPage(GoRouterState state, Widget child) {
   return CustomTransitionPage<void>(
     key: state.pageKey,

@@ -14,11 +14,8 @@ import '../medication_presentation.dart';
 import '../widgets/dose_form_selector.dart';
 import '../widgets/schedule_selector.dart';
 
-/// Create / edit form for a medication.
-///
-/// When [medicationId] is null the form creates a new entry; otherwise it loads
-/// and edits the existing one. Persistence and validation logic delegate to the
-/// repository and the schedule value object — the widget only collects input.
+/// Create (when [medicationId] is null) or edit a medication. The widget only
+/// collects input; persistence goes through the repository.
 class MedicationFormScreen extends ConsumerStatefulWidget {
   const MedicationFormScreen({this.medicationId, super.key});
 

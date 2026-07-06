@@ -3,7 +3,6 @@ import 'package:material_symbols_icons/symbols.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
 
-/// Friendly placeholder shown when a tab has no medications.
 class MedicationsEmptyState extends StatelessWidget {
   const MedicationsEmptyState({this.activeOnly = true, super.key});
 

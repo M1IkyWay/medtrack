@@ -3,12 +3,8 @@ import 'package:equatable/equatable.dart';
 import 'local_time.dart';
 import 'medication_enums.dart';
 
-/// When and how often a medication is taken.
-///
-/// A value object owned by its [Medication] — it carries no identity of its
-/// own; persistence assigns table ids. Only the fields relevant to the chosen
-/// [type] are meaningful (e.g. [daysOfWeek] for [ScheduleType.weekly],
-/// [intervalDays] for [ScheduleType.everyNDays], [totalDoses] for a course).
+/// When and how often a medication is taken — a value object owned by its
+/// [Medication]. Only the fields relevant to the chosen [type] are meaningful.
 class Schedule extends Equatable {
   const Schedule({
     required this.type,

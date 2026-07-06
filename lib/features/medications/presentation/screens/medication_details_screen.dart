@@ -15,8 +15,6 @@ import '../format.dart';
 import '../medication_presentation.dart';
 import '../widgets/dose_history_section.dart';
 
-/// Detail view for a single medication: header, schedule and (from Day 3) dose
-/// history. Offers edit and delete actions.
 class MedicationDetailsScreen extends ConsumerWidget {
   const MedicationDetailsScreen({required this.medicationId, super.key});
 

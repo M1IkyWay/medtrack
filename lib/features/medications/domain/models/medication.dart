@@ -3,11 +3,8 @@ import 'package:equatable/equatable.dart';
 import 'medication_enums.dart';
 import 'schedule.dart';
 
-/// A medication the user is tracking, together with its [Schedule].
-///
-/// The core domain entity. [id] is `null` for a not-yet-persisted medication;
-/// the repository assigns one on insert. Dose history is not embedded here — it
-/// is queried separately from the repository to keep this model lightweight.
+/// The core domain entity. [id] is `null` until persisted; dose history is not
+/// embedded — it's queried separately so this model stays light.
 class Medication extends Equatable {
   const Medication({
     required this.name,
@@ -24,35 +21,28 @@ class Medication extends Equatable {
     this.isActive = true,
   });
 
-  /// Persistence id; `null` until saved.
   final int? id;
-
   final String name;
 
-  /// Active ingredient / international name (e.g. "Ibuprofen").
+  /// Active ingredient, e.g. "Ibuprofen".
   final String? genericName;
 
   final MedicationForm form;
   final DoseUnit doseUnit;
 
-  /// Amount taken per dose, in [doseUnit] (e.g. 400 for "400 mg").
+  /// Amount per dose, in [doseUnit] (e.g. 400 for "400 mg").
   final double doseAmount;
 
-  /// Free-form notes (e.g. doctor's instructions).
   final String? notes;
 
-  /// The condition this was prescribed for (e.g. "Headache", "Diabetes").
+  /// Condition it's prescribed for, e.g. "Headache".
   final String? prescribedFor;
 
   final DateTime createdAt;
   final DateTime updatedAt;
-
-  /// Whether this is an ongoing/active course (vs. finished or paused).
   final bool isActive;
-
   final Schedule schedule;
 
-  /// Whether this instance has been persisted.
   bool get isPersisted => id != null;
 
   Medication copyWith({

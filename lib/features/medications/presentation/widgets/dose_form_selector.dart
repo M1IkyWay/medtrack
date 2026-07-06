@@ -4,8 +4,6 @@ import '../../../../core/extensions/context_extensions.dart';
 import '../../domain/models/medication_enums.dart';
 import '../medication_presentation.dart';
 
-/// A wrap of choice chips — one per [MedicationForm] — each with its icon and
-/// localized label. Lets the user pick the physical form at a glance.
 class DoseFormSelector extends StatelessWidget {
   const DoseFormSelector({
     required this.value,

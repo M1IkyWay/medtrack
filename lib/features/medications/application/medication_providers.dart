@@ -6,12 +6,11 @@ import '../domain/models/dose_log.dart';
 import '../domain/models/medication.dart';
 import '../domain/repositories/medication_repository.dart';
 
-/// The medication repository, backed by the app's Drift database.
 final medicationRepositoryProvider = Provider<MedicationRepository>((ref) {
   return MedicationRepositoryImpl(ref.watch(databaseProvider));
 });
 
-/// Streams medications for one tab: `true` = active, `false` = inactive.
+/// The `bool` arg is the tab: `true` = active, `false` = inactive.
 final medicationsProvider = StreamProvider.family<List<Medication>, bool>((
   ref,
   activeOnly,
@@ -21,7 +20,6 @@ final medicationsProvider = StreamProvider.family<List<Medication>, bool>((
       .watchMedications(activeOnly: activeOnly);
 });
 
-/// Loads a single medication by id (for the details / edit screens).
 final medicationByIdProvider = FutureProvider.family<Medication?, int>((
   ref,
   id,
@@ -29,7 +27,6 @@ final medicationByIdProvider = FutureProvider.family<Medication?, int>((
   return ref.watch(medicationRepositoryProvider).findById(id);
 });
 
-/// Streams the dose history for one medication, most recent first.
 final doseLogsProvider = StreamProvider.family<List<DoseLog>, int>((ref, id) {
   return ref.watch(medicationRepositoryProvider).watchDoseLogs(id);
 });

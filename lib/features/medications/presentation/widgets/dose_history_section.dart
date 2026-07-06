@@ -11,9 +11,8 @@ import '../../domain/models/medication_enums.dart';
 import '../medication_presentation.dart';
 import 'dose_calendar.dart';
 
-/// Dose history for one medication: adherence rate, a month calendar and the
-/// list of recorded doses. Tapping a row re-opens the take-dose flow so its
-/// status can be changed.
+/// Adherence rate, month calendar and the list of recorded doses. Tapping a row
+/// re-opens the take-dose flow so its status can be changed.
 class DoseHistorySection extends ConsumerWidget {
   const DoseHistorySection({required this.medicationId, super.key});
 
@@ -74,9 +73,8 @@ class DoseHistorySection extends ConsumerWidget {
     );
   }
 
-  /// Fraction of resolved doses that were taken. Only doses the user acted on
-  /// (taken / skipped / missed) count toward the denominator; still-scheduled or
-  /// postponed doses are ignored. Returns null when there is nothing to score.
+  /// Taken / (taken + skipped + missed). Scheduled and postponed doses don't
+  /// count; null when there's nothing to score.
   double? _adherenceRate(List<DoseLog> logs) {
     final resolved = logs.where(
       (l) =>

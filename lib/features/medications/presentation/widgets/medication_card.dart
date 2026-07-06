@@ -6,7 +6,6 @@ import '../../domain/models/medication.dart';
 import '../format.dart';
 import '../medication_presentation.dart';
 
-/// A single medication row in the list: form icon, name, dose and schedule.
 class MedicationCard extends StatelessWidget {
   const MedicationCard({
     required this.medication,

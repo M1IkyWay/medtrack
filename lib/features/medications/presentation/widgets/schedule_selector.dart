@@ -8,10 +8,8 @@ import '../../domain/models/medication_enums.dart';
 import '../../domain/models/schedule.dart';
 import '../medication_presentation.dart';
 
-/// Editor for a [Schedule]. Shows only the fields relevant to the selected
-/// [ScheduleType] and emits an updated [Schedule] via [onChanged].
-///
-/// Owns text controllers for the numeric interval/total-dose fields so typing
+/// Editor for a [Schedule] — shows only the fields the selected [ScheduleType]
+/// needs. Stateful only to own the numeric controllers, so typing in them
 /// doesn't reset the cursor; everything else is derived from [value].
 class ScheduleSelector extends StatefulWidget {
   const ScheduleSelector({
