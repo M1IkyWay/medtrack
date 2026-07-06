@@ -2,11 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'app/app.dart';
+import 'data/services/notification_service.dart';
+import 'data/services/notification_service_provider.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // ProviderScope is the root of the Riverpod graph. Notification/timezone
-  // initialization is added here on Day 3.
-  runApp(const ProviderScope(child: MedTrackApp()));
+  // Initialize local notifications (timezone data + plugin) before the app
+  // starts, then expose the ready instance to the Riverpod graph.
+  final notificationService = NotificationService();
+  await notificationService.init();
+
+  runApp(
+    ProviderScope(
+      overrides: [
+        notificationServiceProvider.overrideWithValue(notificationService),
+      ],
+      child: const MedTrackApp(),
+    ),
+  );
 }

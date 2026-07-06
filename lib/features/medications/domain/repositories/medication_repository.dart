@@ -1,5 +1,6 @@
 import '../models/dose_log.dart';
 import '../models/medication.dart';
+import '../models/medication_enums.dart';
 
 /// Contract for reading and writing medications and their dose history.
 ///
@@ -28,4 +29,15 @@ abstract interface class MedicationRepository {
 
   /// Streams the dose history for one medication, most recent first.
   Stream<List<DoseLog>> watchDoseLogs(int medicationId);
+
+  /// Records the outcome of a dose. Upserts by (medicationId, scheduledTime)
+  /// so acting on the same scheduled dose twice updates the one row rather than
+  /// creating duplicates.
+  Future<void> recordDose({
+    required int medicationId,
+    required DateTime scheduledTime,
+    required DoseStatus status,
+    DateTime? actualTime,
+    String? notes,
+  });
 }

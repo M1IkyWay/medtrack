@@ -104,5 +104,29 @@
   "mealBeforeMeal": "Before meal",
   "mealWithMeal": "With meal",
   "mealAfterMeal": "After meal",
-  "mealEmptyStomach": "On an empty stomach"
+  "mealEmptyStomach": "On an empty stomach",
+
+  "takeDoseTitle": "Take dose",
+  "doseScheduledFor": "Scheduled for {time}",
+  "@doseScheduledFor": {
+    "placeholders": {
+      "time": { "type": "String" }
+    }
+  },
+  "actionTake": "Take",
+  "actionSkip": "Skip",
+  "actionPostpone": "Postpone",
+
+  "statusScheduled": "Scheduled",
+  "statusTaken": "Taken",
+  "statusSkipped": "Skipped",
+  "statusMissed": "Missed",
+  "statusPostponed": "Postponed",
+
+  "complianceLabel": "{percent}% taken",
+  "@complianceLabel": {
+    "placeholders": {
+      "percent": { "type": "int" }
+    }
+  }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
+import '../../../app/theme/app_colors.dart';
 import '../../../l10n/app_localizations.dart';
 import '../domain/models/medication_enums.dart';
 
@@ -73,5 +74,31 @@ extension MealRelationPresentation on MealRelation {
     MealRelation.withMeal => l10n.mealWithMeal,
     MealRelation.afterMeal => l10n.mealAfterMeal,
     MealRelation.emptyStomach => l10n.mealEmptyStomach,
+  };
+}
+
+extension DoseStatusPresentation on DoseStatus {
+  Color get color => switch (this) {
+    DoseStatus.scheduled => AppColors.statusScheduled,
+    DoseStatus.taken => AppColors.statusTaken,
+    DoseStatus.skipped => AppColors.statusSkipped,
+    DoseStatus.missed => AppColors.statusMissed,
+    DoseStatus.postponed => AppColors.statusPostponed,
+  };
+
+  IconData get icon => switch (this) {
+    DoseStatus.scheduled => Symbols.schedule,
+    DoseStatus.taken => Symbols.check_circle,
+    DoseStatus.skipped => Symbols.cancel,
+    DoseStatus.missed => Symbols.error,
+    DoseStatus.postponed => Symbols.snooze,
+  };
+
+  String label(AppLocalizations l10n) => switch (this) {
+    DoseStatus.scheduled => l10n.statusScheduled,
+    DoseStatus.taken => l10n.statusTaken,
+    DoseStatus.skipped => l10n.statusSkipped,
+    DoseStatus.missed => l10n.statusMissed,
+    DoseStatus.postponed => l10n.statusPostponed,
   };
 }

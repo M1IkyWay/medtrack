@@ -1,19 +1,62 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../data/services/notification_service.dart';
+import '../data/services/notification_service_provider.dart';
 import '../l10n/app_localizations.dart';
 import 'router.dart';
 import 'theme/app_theme.dart';
 
-/// Root widget: wires up routing, theming and localization.
+/// Root widget: wires up routing, theming and localization, and bridges
+/// notification taps into navigation.
 ///
 /// The app follows the system theme (light/dark) and system locale by default;
 /// explicit overrides for both arrive on Day 4 via settings.
-class MedTrackApp extends ConsumerWidget {
+class MedTrackApp extends ConsumerStatefulWidget {
   const MedTrackApp({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<MedTrackApp> createState() => _MedTrackAppState();
+}
+
+class _MedTrackAppState extends ConsumerState<MedTrackApp> {
+  StreamSubscription<DoseNotificationPayload>? _tapSubscription;
+
+  @override
+  void initState() {
+    super.initState();
+    final service = ref.read(notificationServiceProvider);
+    _tapSubscription = service.taps.listen(_openTakeDose);
+
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await service.requestPermissions();
+      final launch = await service.initialLaunchPayload();
+      if (launch != null) _openTakeDose(launch);
+    });
+  }
+
+  @override
+  void dispose() {
+    _tapSubscription?.cancel();
+    super.dispose();
+  }
+
+  void _openTakeDose(DoseNotificationPayload payload) {
+    ref
+        .read(routerProvider)
+        .pushNamed(
+          RouteName.takeDose,
+          queryParameters: {
+            'medicationId': '${payload.medicationId}',
+            'time': '${payload.scheduledTime.millisecondsSinceEpoch}',
+          },
+        );
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final router = ref.watch(routerProvider);
 
     return MaterialApp.router(

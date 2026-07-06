@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../features/medications/presentation/screens/medication_details_screen.dart';
 import '../features/medications/presentation/screens/medication_form_screen.dart';
 import '../features/medications/presentation/screens/medications_list_screen.dart';
+import '../features/medications/presentation/screens/take_dose_screen.dart';
 import '../features/settings/presentation/screens/settings_screen.dart';
 
 /// Named routes for the app.
@@ -15,6 +16,7 @@ abstract final class RouteName {
   static const medications = 'medications';
   static const medicationForm = 'medication-form';
   static const medicationDetails = 'medication-details';
+  static const takeDose = 'take-dose';
   static const settings = 'settings';
 }
 
@@ -43,6 +45,18 @@ final routerProvider = Provider<GoRouter>((ref) {
             builder: (context, state) {
               final id = int.parse(state.pathParameters['id']!);
               return MedicationDetailsScreen(medicationId: id);
+            },
+          ),
+          GoRoute(
+            path: 'take',
+            name: RouteName.takeDose,
+            builder: (context, state) {
+              final id = int.parse(state.uri.queryParameters['medicationId']!);
+              final millis = int.parse(state.uri.queryParameters['time']!);
+              return TakeDoseScreen(
+                medicationId: id,
+                scheduledTime: DateTime.fromMillisecondsSinceEpoch(millis),
+              );
             },
           ),
           GoRoute(

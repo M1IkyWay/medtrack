@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
+import '../../../../data/services/notification_service_provider.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../application/medication_providers.dart';
 import '../../domain/models/local_time.dart';
@@ -132,11 +133,14 @@ class _MedicationFormScreenState extends ConsumerState<MedicationFormScreen> {
     );
 
     try {
+      final scheduler = ref.read(notificationServiceProvider);
       if (widget.isEditing) {
         await repository.update(medication);
+        await scheduler.scheduleMedication(medication);
         ref.invalidate(medicationByIdProvider(widget.medicationId!));
       } else {
-        await repository.add(medication);
+        final id = await repository.add(medication);
+        await scheduler.scheduleMedication(medication.copyWith(id: id));
       }
       if (mounted) context.pop();
     } catch (error) {

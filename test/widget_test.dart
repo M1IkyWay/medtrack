@@ -7,6 +7,20 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:medtrack/app/app.dart';
 import 'package:medtrack/data/local/database.dart';
 import 'package:medtrack/data/local/database_provider.dart';
+import 'package:medtrack/data/services/notification_service.dart';
+import 'package:medtrack/data/services/notification_service_provider.dart';
+
+/// No-op notification service so app startup doesn't touch the platform plugin.
+class _FakeNotificationService extends NotificationService {
+  @override
+  Future<void> init() async {}
+
+  @override
+  Future<bool> requestPermissions() async => true;
+
+  @override
+  Future<DoseNotificationPayload?> initialLaunchPayload() async => null;
+}
 
 void main() {
   setUpAll(() {
@@ -26,6 +40,9 @@ void main() {
             ref.onDispose(db.close);
             return db;
           }),
+          notificationServiceProvider.overrideWithValue(
+            _FakeNotificationService(),
+          ),
         ],
         child: const MedTrackApp(),
       ),

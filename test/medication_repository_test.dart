@@ -96,4 +96,32 @@ void main() {
     await repository.delete(id);
     expect(await repository.findById(id), isNull);
   });
+
+  test('recordDose upserts by (medication, scheduledTime)', () async {
+    final id = await repository.add(sample());
+    final scheduledTime = DateTime(2026, 1, 5, 9);
+
+    await repository.recordDose(
+      medicationId: id,
+      scheduledTime: scheduledTime,
+      status: DoseStatus.taken,
+      actualTime: DateTime(2026, 1, 5, 9, 3),
+    );
+
+    var logs = await repository.watchDoseLogs(id).first;
+    expect(logs, hasLength(1));
+    expect(logs.single.status, DoseStatus.taken);
+
+    // Acting on the same scheduled dose again updates the existing row.
+    await repository.recordDose(
+      medicationId: id,
+      scheduledTime: scheduledTime,
+      status: DoseStatus.skipped,
+    );
+
+    logs = await repository.watchDoseLogs(id).first;
+    expect(logs, hasLength(1));
+    expect(logs.single.status, DoseStatus.skipped);
+    expect(logs.single.actualTime, isNull);
+  });
 }

@@ -83,5 +83,19 @@
   "mealBeforeMeal": "Vor der Mahlzeit",
   "mealWithMeal": "Zur Mahlzeit",
   "mealAfterMeal": "Nach der Mahlzeit",
-  "mealEmptyStomach": "Auf nüchternen Magen"
+  "mealEmptyStomach": "Auf nüchternen Magen",
+
+  "takeDoseTitle": "Dosis einnehmen",
+  "doseScheduledFor": "Geplant für {time}",
+  "actionTake": "Einnehmen",
+  "actionSkip": "Überspringen",
+  "actionPostpone": "Verschieben",
+
+  "statusScheduled": "Geplant",
+  "statusTaken": "Eingenommen",
+  "statusSkipped": "Übersprungen",
+  "statusMissed": "Verpasst",
+  "statusPostponed": "Verschoben",
+
+  "complianceLabel": "{percent}% eingenommen"
 }

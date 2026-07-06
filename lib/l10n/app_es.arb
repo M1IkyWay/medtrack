@@ -83,5 +83,19 @@
   "mealBeforeMeal": "Antes de comer",
   "mealWithMeal": "Con la comida",
   "mealAfterMeal": "Después de comer",
-  "mealEmptyStomach": "En ayunas"
+  "mealEmptyStomach": "En ayunas",
+
+  "takeDoseTitle": "Tomar dosis",
+  "doseScheduledFor": "Programada para las {time}",
+  "actionTake": "Tomar",
+  "actionSkip": "Omitir",
+  "actionPostpone": "Posponer",
+
+  "statusScheduled": "Programada",
+  "statusTaken": "Tomada",
+  "statusSkipped": "Omitida",
+  "statusMissed": "Perdida",
+  "statusPostponed": "Pospuesta",
+
+  "complianceLabel": "{percent}% tomadas"
 }

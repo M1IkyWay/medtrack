@@ -6,12 +6,14 @@ import 'package:material_symbols_icons/symbols.dart';
 
 import '../../../../app/router.dart';
 import '../../../../core/extensions/context_extensions.dart';
+import '../../../../data/services/notification_service_provider.dart';
 import '../../application/medication_providers.dart';
 import '../../domain/models/medication.dart';
 import '../../domain/models/medication_enums.dart';
 import '../../domain/models/schedule.dart';
 import '../format.dart';
 import '../medication_presentation.dart';
+import '../widgets/dose_history_section.dart';
 
 /// Detail view for a single medication: header, schedule and (from Day 3) dose
 /// history. Offers edit and delete actions.
@@ -46,6 +48,7 @@ class MedicationDetailsScreen extends ConsumerWidget {
 
     if (confirmed != true) return;
     await ref.read(medicationRepositoryProvider).delete(medicationId);
+    await ref.read(notificationServiceProvider).cancelMedication(medicationId);
     if (context.mounted) context.pop();
   }
 
@@ -154,12 +157,7 @@ class _DetailsBody extends StatelessWidget {
         const SizedBox(height: 24),
         Text(l10n.detailsHistoryTitle, style: context.textStyles.titleMedium),
         const SizedBox(height: 8),
-        Text(
-          l10n.detailsNoDoses,
-          style: context.textStyles.bodyMedium?.copyWith(
-            color: context.colors.onSurfaceVariant,
-          ),
-        ),
+        DoseHistorySection(medicationId: medication.id!),
       ],
     );
   }

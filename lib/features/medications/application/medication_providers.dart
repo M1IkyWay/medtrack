@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../data/local/database_provider.dart';
 import '../data/medication_repository_impl.dart';
+import '../domain/models/dose_log.dart';
 import '../domain/models/medication.dart';
 import '../domain/repositories/medication_repository.dart';
 
@@ -26,4 +27,9 @@ final medicationByIdProvider = FutureProvider.family<Medication?, int>((
   id,
 ) {
   return ref.watch(medicationRepositoryProvider).findById(id);
+});
+
+/// Streams the dose history for one medication, most recent first.
+final doseLogsProvider = StreamProvider.family<List<DoseLog>, int>((ref, id) {
+  return ref.watch(medicationRepositoryProvider).watchDoseLogs(id);
 });

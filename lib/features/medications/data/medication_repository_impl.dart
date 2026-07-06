@@ -3,6 +3,7 @@ import 'package:drift/drift.dart';
 import '../../../data/local/database.dart';
 import '../domain/models/dose_log.dart';
 import '../domain/models/medication.dart';
+import '../domain/models/medication_enums.dart';
 import '../domain/models/schedule.dart';
 import '../domain/repositories/medication_repository.dart';
 
@@ -107,6 +108,41 @@ class MedicationRepositoryImpl implements MedicationRepository {
       ..where((t) => t.medicationId.equals(medicationId))
       ..orderBy([(t) => OrderingTerm.desc(t.scheduledTime)]);
     return query.watch().map((rows) => rows.map(_doseLogToDomain).toList());
+  }
+
+  @override
+  Future<void> recordDose({
+    required int medicationId,
+    required DateTime scheduledTime,
+    required DoseStatus status,
+    DateTime? actualTime,
+    String? notes,
+  }) {
+    return _db.transaction(() async {
+      final existing =
+          await (_db.select(_db.doseLogs)..where(
+                (t) =>
+                    t.medicationId.equals(medicationId) &
+                    t.scheduledTime.equals(scheduledTime),
+              ))
+              .getSingleOrNull();
+
+      final companion = DoseLogsCompanion(
+        medicationId: Value(medicationId),
+        scheduledTime: Value(scheduledTime),
+        status: Value(status),
+        actualTime: Value(actualTime),
+        notes: Value(notes),
+      );
+
+      if (existing == null) {
+        await _db.into(_db.doseLogs).insert(companion);
+      } else {
+        await (_db.update(
+          _db.doseLogs,
+        )..where((t) => t.id.equals(existing.id))).write(companion);
+      }
+    });
   }
 
   // --- Mapping helpers -------------------------------------------------------

@@ -83,5 +83,19 @@
   "mealBeforeMeal": "До їжі",
   "mealWithMeal": "Під час їжі",
   "mealAfterMeal": "Після їжі",
-  "mealEmptyStomach": "Натщесерце"
+  "mealEmptyStomach": "Натщесерце",
+
+  "takeDoseTitle": "Прийом дози",
+  "doseScheduledFor": "Заплановано на {time}",
+  "actionTake": "Прийняв",
+  "actionSkip": "Пропустити",
+  "actionPostpone": "Відкласти",
+
+  "statusScheduled": "Заплановано",
+  "statusTaken": "Прийнято",
+  "statusSkipped": "Пропущено",
+  "statusMissed": "Втрачено",
+  "statusPostponed": "Відкладено",
+
+  "complianceLabel": "Прийнято {percent}%"
 }
