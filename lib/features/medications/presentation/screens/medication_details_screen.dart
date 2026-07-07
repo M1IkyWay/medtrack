@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
-import 'package:material_symbols_icons/symbols.dart';
 
 import '../../../../app/router.dart';
 import '../../../../core/extensions/context_extensions.dart';
@@ -61,7 +60,7 @@ class MedicationDetailsScreen extends ConsumerWidget {
         actions: [
           if (async.value != null) ...[
             IconButton(
-              icon: const Icon(Symbols.edit),
+              icon: const Icon(Icons.edit),
               tooltip: l10n.commonEdit,
               onPressed: () => context.pushNamed(
                 RouteName.medicationForm,
@@ -69,7 +68,7 @@ class MedicationDetailsScreen extends ConsumerWidget {
               ),
             ),
             IconButton(
-              icon: const Icon(Symbols.delete),
+              icon: const Icon(Icons.delete),
               tooltip: l10n.commonDelete,
               onPressed: () => _confirmDelete(context, ref, async.value!),
             ),
@@ -183,18 +182,18 @@ class _ScheduleCard extends StatelessWidget {
               style: context.textStyles.titleMedium,
             ),
             const SizedBox(height: 12),
-            _Row(Symbols.repeat, schedule.type.label(l10n)),
+            _Row(Icons.repeat, schedule.type.label(l10n)),
             if (schedule.times.isNotEmpty)
-              _Row(Symbols.schedule, formatTimes(schedule.times)),
-            _Row(Symbols.restaurant, schedule.mealRelation.label(l10n)),
+              _Row(Icons.schedule, formatTimes(schedule.times)),
+            _Row(Icons.restaurant, schedule.mealRelation.label(l10n)),
             if (schedule.type == ScheduleType.course &&
                 schedule.totalDoses != null)
               _Row(
-                Symbols.medication,
+                Icons.medication,
                 l10n.detailsCourseProgress(0, schedule.totalDoses!),
               ),
             if (schedule.startDate != null)
-              _Row(Symbols.event, dateFormat.format(schedule.startDate!)),
+              _Row(Icons.event, dateFormat.format(schedule.startDate!)),
           ],
         ),
       ),

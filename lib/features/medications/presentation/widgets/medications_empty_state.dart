@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:material_symbols_icons/symbols.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
 
@@ -24,7 +23,7 @@ class MedicationsEmptyState extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Symbols.pill, size: 72, color: context.colors.primary),
+            Icon(Icons.medication, size: 72, color: context.colors.primary),
             const SizedBox(height: 16),
             Text(
               title,

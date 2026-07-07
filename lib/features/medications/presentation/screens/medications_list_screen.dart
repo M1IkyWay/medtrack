@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:material_symbols_icons/symbols.dart';
 
 import '../../../../app/router.dart';
 import '../../../../core/extensions/context_extensions.dart';
@@ -21,7 +20,7 @@ class MedicationsListScreen extends StatelessWidget {
           title: Text(context.l10n.medicationsListTitle),
           actions: [
             IconButton(
-              icon: const Icon(Symbols.settings),
+              icon: const Icon(Icons.settings),
               tooltip: context.l10n.settingsTitle,
               onPressed: () => context.pushNamed(RouteName.settings),
             ),
@@ -41,7 +40,7 @@ class MedicationsListScreen extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton.extended(
           onPressed: () => context.pushNamed(RouteName.medicationForm),
-          icon: const Icon(Symbols.add),
+          icon: const Icon(Icons.add),
           label: Text(context.l10n.addMedication),
         ),
       ),

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
-import 'package:material_symbols_icons/symbols.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../data/services/notification_service_provider.dart';
@@ -113,21 +112,21 @@ class TakeDoseScreen extends ConsumerWidget {
                 FilledButton.icon(
                   onPressed: () =>
                       _record(context, ref, medication, DoseStatus.taken),
-                  icon: const Icon(Symbols.check),
+                  icon: const Icon(Icons.check),
                   label: Text(l10n.actionTake),
                 ),
                 const SizedBox(height: 12),
                 OutlinedButton.icon(
                   onPressed: () =>
                       _record(context, ref, medication, DoseStatus.postponed),
-                  icon: const Icon(Symbols.snooze),
+                  icon: const Icon(Icons.snooze),
                   label: Text(l10n.actionPostpone),
                 ),
                 const SizedBox(height: 12),
                 TextButton.icon(
                   onPressed: () =>
                       _record(context, ref, medication, DoseStatus.skipped),
-                  icon: const Icon(Symbols.close),
+                  icon: const Icon(Icons.close),
                   label: Text(l10n.actionSkip),
                 ),
               ],

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:material_symbols_icons/symbols.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
 import '../../domain/models/medication.dart';
@@ -47,7 +46,7 @@ class MedicationCard extends StatelessWidget {
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
-        trailing: const Icon(Symbols.chevron_right),
+        trailing: const Icon(Icons.chevron_right),
         onTap: onTap,
       ),
     );

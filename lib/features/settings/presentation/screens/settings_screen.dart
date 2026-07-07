@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:material_symbols_icons/symbols.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/constants/app_info.dart';
@@ -73,13 +72,13 @@ class SettingsScreen extends ConsumerWidget {
           const Divider(height: 1),
           _SectionHeader(l10n.settingsAbout),
           ListTile(
-            leading: const Icon(Symbols.info),
+            leading: const Icon(Icons.info),
             title: Text(l10n.aboutVersion(AppInfo.version)),
           ),
           ListTile(
-            leading: const Icon(Symbols.code),
+            leading: const Icon(Icons.code),
             title: Text(l10n.aboutSource),
-            trailing: const Icon(Symbols.open_in_new, size: 18),
+            trailing: const Icon(Icons.open_in_new, size: 18),
             onTap: () => _openSource(context),
           ),
           Padding(
@@ -87,7 +86,7 @@ class SettingsScreen extends ConsumerWidget {
             child: Row(
               children: [
                 Icon(
-                  Symbols.lock,
+                  Icons.lock,
                   size: 18,
                   color: context.colors.onSurfaceVariant,
                 ),

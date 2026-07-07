@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:material_symbols_icons/symbols.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
 import '../../domain/models/local_time.dart';
@@ -128,7 +127,7 @@ class _ScheduleSelectorState extends State<ScheduleSelector> {
                   onDeleted: () => _removeTime(time),
                 ),
               ActionChip(
-                avatar: const Icon(Symbols.add, size: 18),
+                avatar: const Icon(Icons.add, size: 18),
                 label: Text(l10n.addTime),
                 onPressed: _addTime,
               ),

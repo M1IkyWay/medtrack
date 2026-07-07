@@ -1,5 +1,4 @@
-import 'package:flutter/widgets.dart';
-import 'package:material_symbols_icons/symbols.dart';
+import 'package:flutter/material.dart';
 
 import '../../../app/theme/app_colors.dart';
 import '../../../l10n/app_localizations.dart';
@@ -10,18 +9,18 @@ import '../domain/models/medication_enums.dart';
 
 extension MedicationFormPresentation on MedicationForm {
   IconData get icon => switch (this) {
-    MedicationForm.tablet => Symbols.medication,
-    MedicationForm.capsule => Symbols.pill,
-    MedicationForm.liquid => Symbols.local_drink,
-    MedicationForm.drops => Symbols.water_drop,
-    MedicationForm.injection => Symbols.vaccines,
-    MedicationForm.inhaler => Symbols.air,
-    MedicationForm.patch => Symbols.healing,
-    MedicationForm.cream => Symbols.format_color_fill,
-    MedicationForm.ointment => Symbols.opacity,
-    MedicationForm.suppository => Symbols.medication,
-    MedicationForm.spray => Symbols.sanitizer,
-    MedicationForm.other => Symbols.more_horiz,
+    MedicationForm.tablet => Icons.medication,
+    MedicationForm.capsule => Icons.medication_outlined,
+    MedicationForm.liquid => Icons.local_drink,
+    MedicationForm.drops => Icons.water_drop,
+    MedicationForm.injection => Icons.vaccines,
+    MedicationForm.inhaler => Icons.air,
+    MedicationForm.patch => Icons.healing,
+    MedicationForm.cream => Icons.format_color_fill,
+    MedicationForm.ointment => Icons.opacity,
+    MedicationForm.suppository => Icons.medication,
+    MedicationForm.spray => Icons.sanitizer,
+    MedicationForm.other => Icons.more_horiz,
   };
 
   String label(AppLocalizations l10n) => switch (this) {
@@ -86,11 +85,11 @@ extension DoseStatusPresentation on DoseStatus {
   };
 
   IconData get icon => switch (this) {
-    DoseStatus.scheduled => Symbols.schedule,
-    DoseStatus.taken => Symbols.check_circle,
-    DoseStatus.skipped => Symbols.cancel,
-    DoseStatus.missed => Symbols.error,
-    DoseStatus.postponed => Symbols.snooze,
+    DoseStatus.scheduled => Icons.schedule,
+    DoseStatus.taken => Icons.check_circle,
+    DoseStatus.skipped => Icons.cancel,
+    DoseStatus.missed => Icons.error,
+    DoseStatus.postponed => Icons.snooze,
   };
 
   String label(AppLocalizations l10n) => switch (this) {
