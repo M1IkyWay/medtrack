@@ -55,7 +55,7 @@
   "validationSelectDays": "Select at least one day",
 
   "deleteConfirmTitle": "Delete medication?",
-  "deleteConfirmMessage": "This removes {name} and its dose history. This can''t be undone.",
+  "deleteConfirmMessage": "This removes {name} and its dose history. This can't be undone.",
   "@deleteConfirmMessage": {
     "placeholders": {
       "name": { "type": "String" }

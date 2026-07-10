@@ -35,8 +35,9 @@ class MedicationDetailsScreen extends ConsumerWidget {
             onPressed: () => Navigator.of(dialogContext).pop(false),
             child: Text(l10n.commonCancel),
           ),
-          FilledButton(
+          TextButton(
             onPressed: () => Navigator.of(dialogContext).pop(true),
+            style: TextButton.styleFrom(foregroundColor: context.colors.error),
             child: Text(l10n.commonDelete),
           ),
         ],
