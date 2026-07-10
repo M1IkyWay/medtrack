@@ -144,5 +144,6 @@
     }
   },
   "aboutSource": "Source code",
-  "aboutPrivacy": "Your data stays on this device. No accounts, no tracking."
+  "aboutPrivacy": "Your data stays on this device. No accounts, no tracking.",
+  "aboutDisclaimer": "MedTrack is a reminder tool, not medical advice. Always follow your doctor's or pharmacist's instructions."
 }

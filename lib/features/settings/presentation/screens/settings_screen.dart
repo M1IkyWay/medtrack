@@ -81,27 +81,9 @@ class SettingsScreen extends ConsumerWidget {
             trailing: const Icon(Icons.open_in_new, size: 18),
             onTap: () => _openSource(context),
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
-            child: Row(
-              children: [
-                Icon(
-                  Icons.lock,
-                  size: 18,
-                  color: context.colors.onSurfaceVariant,
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Text(
-                    l10n.aboutPrivacy,
-                    style: context.textStyles.bodySmall?.copyWith(
-                      color: context.colors.onSurfaceVariant,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
+          _Note(icon: Icons.lock, text: l10n.aboutPrivacy),
+          _Note(icon: Icons.health_and_safety, text: l10n.aboutDisclaimer),
+          const SizedBox(height: 24),
         ],
       ),
     );
@@ -133,6 +115,33 @@ class _SectionHeader extends StatelessWidget {
         color: context.colors.primary,
         fontWeight: FontWeight.w600,
       ),
+    ),
+  );
+}
+
+class _Note extends StatelessWidget {
+  const _Note({required this.icon, required this.text});
+
+  final IconData icon;
+  final String text;
+
+  @override
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Icon(icon, size: 18, color: context.colors.onSurfaceVariant),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Text(
+            text,
+            style: context.textStyles.bodySmall?.copyWith(
+              color: context.colors.onSurfaceVariant,
+            ),
+          ),
+        ),
+      ],
     ),
   );
 }

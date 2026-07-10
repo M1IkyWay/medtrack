@@ -108,5 +108,6 @@
   "settingsAbout": "Über",
   "aboutVersion": "Version {version}",
   "aboutSource": "Quellcode",
-  "aboutPrivacy": "Deine Daten bleiben auf diesem Gerät. Keine Konten, kein Tracking."
+  "aboutPrivacy": "Deine Daten bleiben auf diesem Gerät. Keine Konten, kein Tracking.",
+  "aboutDisclaimer": "MedTrack ist eine Erinnerungs-App, kein medizinischer Rat. Befolge stets die Anweisungen deiner Ärztin oder deines Arztes bzw. deiner Apotheke."
 }

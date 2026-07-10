@@ -108,5 +108,6 @@
   "settingsAbout": "Acerca de",
   "aboutVersion": "Versión {version}",
   "aboutSource": "Código fuente",
-  "aboutPrivacy": "Tus datos permanecen en este dispositivo. Sin cuentas ni rastreo."
+  "aboutPrivacy": "Tus datos permanecen en este dispositivo. Sin cuentas ni rastreo.",
+  "aboutDisclaimer": "MedTrack es una herramienta de recordatorio, no consejo médico. Sigue siempre las indicaciones de tu médico o farmacéutico."
 }
