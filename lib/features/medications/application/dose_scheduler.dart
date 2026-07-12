@@ -32,7 +32,7 @@ abstract final class DoseScheduler {
       !day.isAfter(end);
       day = day.add(const Duration(days: 1))
     ) {
-      if (!_dayMatches(schedule, day)) continue;
+      if (!_dayMatches(schedule, day, from)) continue;
       for (final time in times) {
         final at = DateTime(
           day.year,
@@ -72,11 +72,13 @@ abstract final class DoseScheduler {
     return end.isBefore(horizonEnd) ? end : horizonEnd;
   }
 
-  static bool _dayMatches(Schedule schedule, DateTime day) {
+  static bool _dayMatches(Schedule schedule, DateTime day, DateTime from) {
+    // A fixed anchor — the start date, or today when none is set. Must not be
+    // the iterated day, or "once"/"everyNDays" would match every day.
+    final anchor = _dateOnly(schedule.startDate ?? from);
     switch (schedule.type) {
       case ScheduleType.once:
-        final start = schedule.startDate ?? day;
-        return day.isSameDayAs(start);
+        return day.isSameDayAs(anchor);
       case ScheduleType.daily:
       case ScheduleType.course:
         return true;
@@ -85,7 +87,6 @@ abstract final class DoseScheduler {
       case ScheduleType.everyNDays:
         final interval = schedule.intervalDays ?? 1;
         if (interval <= 0) return false;
-        final anchor = _dateOnly(schedule.startDate ?? day);
         final diff = day.difference(anchor).inDays;
         return diff >= 0 && diff % interval == 0;
       case ScheduleType.asNeeded:

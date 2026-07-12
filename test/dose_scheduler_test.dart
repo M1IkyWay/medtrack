@@ -90,4 +90,32 @@ void main() {
 
     expect(doses, [DateTime(2026, 1, 10, 9)]);
   });
+
+  test('once with no start date fires exactly once (regression)', () {
+    // Without a start date, "once" must default to today only — not every day.
+    final doses = DoseScheduler.upcomingDoses(
+      const Schedule(type: ScheduleType.once, times: [LocalTime(9, 0)]),
+      from: monday8am,
+    );
+
+    expect(doses, [DateTime(2026, 1, 5, 9)]);
+  });
+
+  test('everyNDays with no start date is not daily (regression)', () {
+    final doses = DoseScheduler.upcomingDoses(
+      const Schedule(
+        type: ScheduleType.everyNDays,
+        times: [LocalTime(9, 0)],
+        intervalDays: 3,
+      ),
+      from: DateTime(2026, 1, 5, 7),
+      horizon: const Duration(days: 6),
+    );
+
+    expect(doses, [
+      DateTime(2026, 1, 5, 9),
+      DateTime(2026, 1, 8, 9),
+      DateTime(2026, 1, 11, 9),
+    ]);
+  });
 }
