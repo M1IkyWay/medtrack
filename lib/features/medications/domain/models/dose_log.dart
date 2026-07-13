@@ -16,16 +16,12 @@ class DoseLog extends Equatable {
 
   final int? id;
   final int medicationId;
-
-  /// When the dose was due.
   final DateTime scheduledTime;
 
-  /// When it was actually taken; `null` unless taken/postponed.
+  /// `null` unless taken/postponed.
   final DateTime? actualTime;
 
   final DoseStatus status;
-
-  /// Optional note, e.g. "skipped — nausea".
   final String? notes;
 
   DoseLog copyWith({

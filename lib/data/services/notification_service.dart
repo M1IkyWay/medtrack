@@ -122,7 +122,6 @@ class NotificationService {
     return androidGranted && iosGranted;
   }
 
-  /// Cancels and re-schedules all reminders for [medication].
   Future<void> scheduleMedication(Medication medication) async {
     final id = medication.id;
     if (id == null) return;
@@ -187,7 +186,6 @@ class NotificationService {
     iOS: DarwinNotificationDetails(),
   );
 
-  /// Cancels every reminder previously scheduled for [medicationId].
   Future<void> cancelMedication(int medicationId) async {
     final base = medicationId * _slots;
     for (var i = 0; i < _slots; i++) {

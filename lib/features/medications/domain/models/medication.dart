@@ -30,14 +30,11 @@ class Medication extends Equatable {
   final MedicationForm form;
   final DoseUnit doseUnit;
 
-  /// Amount per dose, in [doseUnit] (e.g. 400 for "400 mg").
+  /// Amount per dose, in [doseUnit] (400 for "400 mg").
   final double doseAmount;
 
   final String? notes;
-
-  /// Condition it's prescribed for, e.g. "Headache".
   final String? prescribedFor;
-
   final DateTime createdAt;
   final DateTime updatedAt;
   final bool isActive;

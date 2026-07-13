@@ -276,8 +276,7 @@ class _MedicationFormScreenState extends ConsumerState<MedicationFormScreen> {
                     controller: _notesController,
                     minLines: 2,
                     maxLines: 4,
-                    // Show a "Done" key (instead of a newline key) that dismisses
-                    // the keyboard; also dismiss when tapping outside the field.
+                    // A "Done" key instead of a newline, so the keyboard closes.
                     keyboardType: TextInputType.text,
                     textInputAction: TextInputAction.done,
                     onTapOutside: (_) => FocusScope.of(context).unfocus(),

@@ -18,27 +18,20 @@ class Schedule extends Equatable {
   });
 
   final ScheduleType type;
-
-  /// Times of day the dose is taken. Empty for [ScheduleType.asNeeded].
   final List<LocalTime> times;
 
-  /// Weekdays for [ScheduleType.weekly], 1 = Monday … 7 = Sunday.
+  /// Weekdays, 1 = Monday … 7 = Sunday.
   final List<int>? daysOfWeek;
 
-  /// Interval for [ScheduleType.everyNDays] (e.g. 3 = every third day).
   final int? intervalDays;
-
   final DateTime? startDate;
 
-  /// End of the schedule; `null` means ongoing.
+  /// `null` means ongoing.
   final DateTime? endDate;
 
-  /// Total number of doses for a finite course.
   final int? totalDoses;
-
   final MealRelation mealRelation;
 
-  /// Whether this schedule has a defined end (a course or an explicit end date).
   bool get isFinite =>
       type == ScheduleType.course ||
       type == ScheduleType.once ||

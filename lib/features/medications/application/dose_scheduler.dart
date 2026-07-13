@@ -1,17 +1,12 @@
 import '../domain/models/medication_enums.dart';
 import '../domain/models/schedule.dart';
 
-/// Pure scheduling logic: given a [Schedule], compute the concrete future dose
-/// times within a rolling horizon.
-///
-/// Kept free of Flutter and the notification plugin so it is fully unit
-/// testable — the notification layer just turns these `DateTime`s into
-/// scheduled reminders.
+/// Turns a [Schedule] into concrete future dose times. Pure (no Flutter, no
+/// plugin) so it's directly unit-testable; the notification layer just turns
+/// these `DateTime`s into reminders.
 abstract final class DoseScheduler {
-  /// Upcoming dose date-times for [schedule], strictly after [from] and within
-  /// [horizon], sorted ascending and capped at [max].
-  ///
-  /// [ScheduleType.asNeeded] has no fixed times and yields an empty list.
+  /// Dose times for [schedule], strictly after [from], within [horizon], sorted
+  /// and capped at [max]. `asNeeded` has no fixed times and returns empty.
   static List<DateTime> upcomingDoses(
     Schedule schedule, {
     required DateTime from,
