@@ -183,7 +183,15 @@ class NotificationService {
       importance: Importance.max,
       priority: Priority.high,
     ),
-    iOS: DarwinNotificationDetails(),
+    // Present the reminder even while the app is in the foreground — otherwise
+    // iOS silently drops it (which read as "reminder didn't fire" in review).
+    iOS: DarwinNotificationDetails(
+      presentAlert: true,
+      presentBadge: true,
+      presentSound: true,
+      presentBanner: true,
+      presentList: true,
+    ),
   );
 
   Future<void> cancelMedication(int medicationId) async {
